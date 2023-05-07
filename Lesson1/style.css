@@ -1,0 +1,41 @@
+.articles {
+    /* display: flex;
+    gap: 24px; */
+    background: red;
+}
+
+/* .article {
+    width: 30%;
+} */
+
+.title {
+    font-size: 24px;
+}
+
+.w-full {
+    width: 100%;
+}
+
+/* from 577 to 768*/
+@media (min-width: 576px) {
+    .articles {
+        display: flex;
+        flex-wrap: wrap;
+        background-color: blue;
+    }
+
+    .article {
+        width: 50%;
+    }
+}
+
+/* larger than 768 */
+@media (min-width: 768px) {
+    .articles {
+        background-color: green;
+    }
+
+    .article {
+        width: 33.33%;
+    }
+}

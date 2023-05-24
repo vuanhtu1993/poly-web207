@@ -18,7 +18,7 @@
     <nav class="navbar bg-primary">
         <div class="container d-flex">
             <a class="navbar-brand" href="#">
-                <img src="./images/logo.png" alt="Bootstrap" width="30" height="24">
+                <img src="./images/logo.png" alt="Bootstrap" width="100">
             </a>
 
             <form class="d-flex flex-grow-1" role="search">
@@ -56,67 +56,13 @@
     </div>
 
     <div class="row">
-        <div class="card col-sm-6 col-md-3">
-            <img src="./images/product.png" class="card-img-top" alt="...">
+        <div class="card col-sm-6 col-md-3" ng-repeat="book in data">
+            <!-- {{book.name}} -->
+            <img src="{{book.images[0]}}" class="card-img-top" alt="...">
             <div class="card-body">
-                <h5 class="card-title">Card title</h5>
-                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
-                    card's content.</p>
-                <a href="#" class="btn btn-primary">Go somewhere</a>
-            </div>
-        </div>
-        <div class="card col-sm-6 col-md-3">
-            <img src="./images/product.png" class="card-img-top" alt="...">
-            <div class="card-body">
-                <h5 class="card-title">Card title</h5>
-                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
-                    card's content.</p>
-                <a href="#" class="btn btn-primary">Go somewhere</a>
-            </div>
-        </div>
-        <div class="card col-sm-6 col-md-3">
-            <img src="./images/product.png" class="card-img-top" alt="...">
-            <div class="card-body">
-                <h5 class="card-title">Card title</h5>
-                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
-                    card's content.</p>
-                <a href="#" class="btn btn-primary">Go somewhere</a>
-            </div>
-        </div>
-        <div class="card col-sm-6 col-md-3">
-            <img src="./images/product.png" class="card-img-top" alt="...">
-            <div class="card-body">
-                <h5 class="card-title">Card title</h5>
-                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
-                    card's content.</p>
-                <a href="#" class="btn btn-primary">Go somewhere</a>
-            </div>
-        </div>
-        <div class="card col-sm-6 col-md-3">
-            <img src="./images/product.png" class="card-img-top" alt="...">
-            <div class="card-body">
-                <h5 class="card-title">Card title</h5>
-                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
-                    card's content.</p>
-                <a href="#" class="btn btn-primary">Go somewhere</a>
-            </div>
-        </div>
-        <div class="card col-sm-6 col-md-3">
-            <img src="./images/product.png" class="card-img-top" alt="...">
-            <div class="card-body">
-                <h5 class="card-title">Card title</h5>
-                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
-                    card's content.</p>
-                <a href="#" class="btn btn-primary">Go somewhere</a>
-            </div>
-        </div>
-        <div class="card col-sm-6 col-md-3">
-            <img src="./images/product.png" class="card-img-top" alt="...">
-            <div class="card-body">
-                <h5 class="card-title">Card title</h5>
-                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
-                    card's content.</p>
-                <a href="#" class="btn btn-primary">Go somewhere</a>
+                <h5 class="card-title">{{book.name}}</h5>
+                <p class="card-text">{{book.short_description}}</p>
+                <div class="text-danger">{{book.original_price}}</div>
             </div>
         </div>
     </div>

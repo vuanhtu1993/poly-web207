@@ -1,0 +1,31 @@
+<div class="container mx-auto row">
+    <div class="d-flex align-items-center justify-content-between">
+        <ul class="nav nav-underline">
+            <li class="nav-item">
+                <a class="nav-link" ng-click="filter('')" aria-current="page">Phổ biến</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link">Khuyến mãi</a>
+            </li>
+            <li class="nav-item">
+                <button class="nav-link" ng-click="filter('decrease')">Giá tăng</button>
+            </li>
+            <li class="nav-item">
+                <button class="nav-link" ng-click="filter('increase')">Giá giảm</button>
+            </li>
+        </ul>
+        <form action="">
+            Số lượng bản ghi
+            <input type="number" ng-model="limitBook">
+        </form>
+    </div>
+    <div class="card col-sm-6 col-md-3" ng-repeat="book in data | limitTo : limitBook | orderBy:orderType">
+        <!-- {{book.name}} -->
+        <img src="{{book.images[0]}}" class="card-img-top" alt="...">
+        <div class="card-body">
+            <h5 class="card-title">{{book.name | uppercase}}</h5>
+            <p class="card-text">{{book.short_description | limitTo: 50}}...</p>
+            <div class="text-danger">{{book.original_price | number:0}}đ</div>
+        </div>
+    </div>
+</div>

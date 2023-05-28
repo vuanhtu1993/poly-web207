@@ -1,6 +1,25 @@
 import data from './db.json' assert {type: 'json'}
 
-var app = angular.module("app", [])
+// "//ajax.googleapis.com/ajax/libs/angularjs/X.Y.Z/angular-route.js"
+
+var app = angular.module("app", ['ngRoute'])
+
+// Router
+app.config(function ($routeProvider) {
+    $routeProvider
+        .when('/product', {
+            templateUrl: './pages/product.html',
+            controller: "myController"
+        })
+        .when('/', {
+            templateUrl: './pages/home.html',
+            controller: "myController"
+        })
+        .otherwise({
+            redirectTo: '/'
+        })
+})
+
 
 app.controller('myController', function ($scope) {
     $scope.data = data

@@ -21,19 +21,17 @@
                 <img src="./images/logo.png" alt="Bootstrap" width="60">
             </a>
 
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+                aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
-              </button>
+            </button>
 
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <form class="d-flex w-100" role="search">
-                    <input 
-                        class="form-control rounded-start-1 rounded-end-0" 
-                        type="search" placeholder="Bạn muốn tìm kiếm gì?" 
-                        aria-label="Search"
-                        ng-model="searchStr"
-                        ng-keyup="search($event)"
-                    >
+                    <input class="form-control rounded-start-1 rounded-end-0" type="search"
+                        placeholder="Bạn muốn tìm kiếm gì?" aria-label="Search" ng-model="searchStr"
+                        ng-keyup="search($event)">
                     <button class="btn btn-close-white bg-white rounded-0" type="submit">Search</button>
                 </form>
             </div>
@@ -69,28 +67,33 @@
     </div>
 
     <div class="container mx-auto row">
-
-        <ul class="nav nav-underline">
-            <li class="nav-item">
-              <a class="nav-link" aria-current="page">Phổ biến</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link">Khuyến mãi</a>
-            </li>
-            <li class="nav-item">
-              <button class="nav-link" ng-click="filterDecrease()">Giá tăng</button>
-            </li>
-            <li class="nav-item">
-              <button class="nav-link" ng-click="filterIncrease()">Giá giảm</button>
-            </li>
-          </ul>
-        <div class="card col-sm-6 col-md-3" ng-repeat="book in data">
+        <div class="d-flex align-items-center justify-content-between">
+            <ul class="nav nav-underline">
+                <li class="nav-item">
+                    <a class="nav-link" ng-click="filter('')" aria-current="page">Phổ biến</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link">Khuyến mãi</a>
+                </li>
+                <li class="nav-item">
+                    <button class="nav-link" ng-click="filter('decrease')">Giá tăng</button>
+                </li>
+                <li class="nav-item">
+                    <button class="nav-link" ng-click="filter('increase')">Giá giảm</button>
+                </li>
+            </ul>
+            <form action="">
+                Số lượng bản ghi
+                <input type="number" ng-model="limitBook">
+            </form>
+        </div>
+        <div class="card col-sm-6 col-md-3" ng-repeat="book in data | limitTo : limitBook | orderBy:orderType">
             <!-- {{book.name}} -->
             <img src="{{book.images[0]}}" class="card-img-top" alt="...">
             <div class="card-body">
-                <h5 class="card-title">{{book.name}}</h5>
-                <p class="card-text">{{book.short_description}}</p>
-                <div class="text-danger">{{book.original_price}}</div>
+                <h5 class="card-title">{{book.name | uppercase}}</h5>
+                <p class="card-text">{{book.short_description | limitTo: 50}}...</p>
+                <div class="text-danger">{{book.original_price | number:0}}đ</div>
             </div>
         </div>
     </div>

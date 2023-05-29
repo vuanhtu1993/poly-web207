@@ -1,0 +1,11 @@
+<div class="container mx-auto row">
+    <div class="card col-sm-6 col-md-3" ng-repeat="book in data">
+        <!-- {{book.name}} -->
+        <img src="{{book.images[0]}}" class="card-img-top" alt="...">
+        <div class="card-body">
+            <h5 class="card-title">{{book.name}}</h5>
+            <p class="card-text">{{book.short_description}}</p>
+            <div class="text-danger">{{book.original_price}}</div>
+        </div>
+    </div>
+</div>

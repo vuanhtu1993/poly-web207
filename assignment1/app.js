@@ -1,6 +1,6 @@
 import data from './db.json' assert {type: 'json'}
 
-var app = angular.module("app", ['ngRoute'])
+var app = angular.module("myApp", ['ngRoute'])
 // Bước1: import angular-route
 // Bước2: Khai báo router
 // Bước3: Khai báo <ng-view></ng-view>
@@ -12,7 +12,7 @@ app.config(function ($routeProvider) {
             templateUrl: "./pages/home.html",
             controller: "myController"
         })
-        .when('/product', {
+        .when('/product/:id', {
             templateUrl: "./pages/product.html",
             controller: "myController"
         })
@@ -23,5 +23,9 @@ app.config(function ($routeProvider) {
 
 app.controller('myController', function ($scope) {
     $scope.data = data
+    $scope.orderType = "name"
+    $scope.orderProduct = function (type) {
+        $scope.orderType = type
+    }
 })
 

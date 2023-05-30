@@ -23,7 +23,6 @@ app.config(function ($routeProvider) {
 
 app.controller('myController', function ($scope) {
     $scope.data = data
-    $scope.orderType = "name"
     $scope.orderProduct = function (type) {
         $scope.orderType = type
     }

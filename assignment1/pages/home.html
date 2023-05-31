@@ -13,8 +13,7 @@
     </li>
 </ul>
 <div class="container mx-auto row">
-    <a class="card col-sm-6 col-md-3" ng-repeat="book in data | orderBy:orderType"
-        href="/assignment1/#!/product/{{book.id}}">
+    <a class="card col-sm-6 col-md-3" ng-repeat="book in data | orderBy:orderType" href="#product/{{book.id}}">
         <!-- {{book.name}} -->
         <img src="{{book.images[0]}}" class="card-img-top" alt="...">
         <div class="card-body">

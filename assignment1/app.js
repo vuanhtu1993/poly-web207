@@ -6,7 +6,8 @@ var app = angular.module("myApp", ['ngRoute'])
 // Bước3: Khai báo <ng-view></ng-view>
 
 // Router
-app.config(function ($routeProvider) {
+app.config(function ($routeProvider, $locationProvider) {
+    $locationProvider.hashPrefix("")
     $routeProvider
         .when('/', {
             templateUrl: "./pages/home.html",
@@ -21,10 +22,17 @@ app.config(function ($routeProvider) {
         })
 })
 
-app.controller('myController', function ($scope) {
-    $scope.data = data
+app.controller('myController', function ($rootScope, $scope) {
+    $rootScope.data = data
     $scope.orderProduct = function (type) {
         $scope.orderType = type
+    }
+    $scope.search = function () {
+        console.log($scope.searchStr);
+        var newData = data.filter(function (book) {
+            return book.name.toLowerCase().includes($scope.searchStr.toLowerCase())
+        })
+        $rootScope.data = newData
     }
 })
 
@@ -34,6 +42,5 @@ app.controller("productController", function ($scope, $routeParams) {
     $scope.book = data.find(function (item) {
         return $routeParams.id == item.id
     })
-
 })
 

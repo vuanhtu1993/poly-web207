@@ -27,12 +27,12 @@ app.controller('myController', function ($rootScope, $scope) {
     $scope.orderProduct = function (type) {
         $scope.orderType = type
     }
-    $scope.search = function () {
-        console.log($scope.searchStr);
-        var newData = data.filter(function (book) {
-            return book.name.toLowerCase().includes($scope.searchStr.toLowerCase())
-        })
-        $rootScope.data = newData
+    $scope.search = function (event) {
+        if (event.keyCode == 13) {
+            $rootScope.data = data.filter(function (book) {
+                return book.name.toLowerCase().includes($scope.searchStr.toLowerCase())
+            })
+        }
     }
 })
 

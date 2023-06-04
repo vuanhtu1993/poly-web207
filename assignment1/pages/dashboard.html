@@ -1,0 +1,29 @@
+<div>
+    <div class="p-2 d-flex justify-content-end">
+        <a href="#dashboard/add">Thêm mới</a>
+    </div>
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">Tên</th>
+                <th scope="col">Ảnh</th>
+                <th scope="col">Giá</th>
+                <th scope="col">Mô tả</th>
+                <th scope="col">Thao tác</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr ng-repeat="book in books">
+                <th width="10%" scope="row">{{$index + 1}}</th>
+                <td width="20%">{{book.name}}</td>
+                <td width="20%"><img class="w-100" src="{{book.images[0]}}" alt=""></td>
+                <td width="10%">{{book.original_price | number:0}}</td>
+                <td width="20%">{{book.short_description | limitTo:50}}...</td>
+                <td>
+                    <button ng-click="delete(book.id)">Xoá</button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>

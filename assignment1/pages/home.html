@@ -1,5 +1,5 @@
 <!-- Banner -->
-<div id="carouselExample" class="carousel slide container">
+<div id="carouselExample" class="carousel slide container" ng-controller="myController">
     <div class="carousel-inner">
         <div class="carousel-item active">
             <img src="https://salt.tikicdn.com/cache/w1080/ts/tikimsp/fa/51/d2/0c66f36741a6268cbeda79f92e6c7cae.png"
@@ -34,16 +34,16 @@
         <button class="nav-link" ng-click="orderProduct('original_price')">Giá tăng</button>
     </li>
     <li class="nav-item">
-        <a class="nav-link">Giá giảm</a>
+        <a class="nav-link" ng-click="orderProduct('-original_price')">Giá giảm</a>
     </li>
 </ul>
 <div class="container mx-auto row">
-    <a class="card col-sm-6 col-md-3" ng-repeat="book in data | orderBy:orderType" href="#product/{{book.id}}">
+    <a class="card col-sm-6 col-md-3" ng-repeat="book in books | orderBy:orderType" href="#product/{{book.id}}">
         <!-- {{book.name}} -->
-        <img src="{{book.images[0]}}" class="card-img-top" alt="...">
+        <img src="{{book.images || book.images[0]}}" class="card-img-top" alt="...">
         <div class="card-body">
             <h5 class="card-title">{{book.name | uppercase}}</h5>
-            <p class="card-text">{{book.short_description | limitTo:50}}...</p>
+            <p class="card-text">{{book.short_description}}...</p>
             <div class="text-danger">{{book.original_price | number:0}}đ</div>
         </div>
     </a>

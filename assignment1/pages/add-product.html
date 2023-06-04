@@ -1,0 +1,23 @@
+<div class="container mx-auto">
+    <h2>Thêm mới sản phẩm</h2>
+    <form class="row g-3" ng-submit="submit($event)">
+        <div class="col-8">
+            <div>
+                <label for="name" class="form-label">Tên sản phẩm</label>
+                <input type="text" class="form-control" id="name" ng-model="product.name">
+            </div>
+            <div>
+                <label for="name" class="form-label">Gía sản phẩm</label>
+                <input type="number" class="form-control" id="original_price" ng-model="product.original_price">
+            </div>
+        </div>
+        <div class="col-4">
+            <img class="w-100"
+                src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/65/No-Image-Placeholder.svg/1665px-No-Image-Placeholder.svg.png"
+                alt="">
+        </div>
+        <div class="col-12">
+            <button type="submit" class="btn btn-primary">Thêm mới</button>
+        </div>
+    </form>
+</div>

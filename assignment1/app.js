@@ -19,6 +19,10 @@ app.config(function ($routeProvider, $locationProvider) {
             templateUrl: "./pages/dashboard.html",
             controller: "dashboardController"
         })
+        .when('/admin/add', {
+            templateUrl: "./pages/add-product.html",
+            controller: "addProductController"
+        })
         .otherwise({
             redirectTo: "/"
         })
@@ -42,12 +46,17 @@ app.controller('myController', function ($rootScope, $scope, $http) {
     }
 })
 
-app.controller("productController", function ($scope, $routeParams) {
+app.controller("productController", function ($scope, $routeParams, $http) {
     $scope.id = $routeParams.id
-    $scope.book = data.find(function (item) {
-        return $routeParams.id == item.id
-    })
+    // $scope.book = data.find(function (item) {
+    //     return $routeParams.id == item.id
+    // })
+    $http.get('http://localhost:3000/books/' + $scope.id)
+        .then(function (res) {
+            $scope.book = res.data
+        })
 })
+
 
 app.controller('dashboardController', function ($scope, $rootScope, $http) {
     // $scope.books = $rootScope.books
@@ -64,3 +73,6 @@ app.controller('dashboardController', function ($scope, $rootScope, $http) {
     }
 })
 
+app.controller("addProductController", function ($scope, $routeParams) {
+    console.log("addProductController");
+})

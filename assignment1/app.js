@@ -23,6 +23,10 @@ app.config(function ($routeProvider, $locationProvider) {
             templateUrl: "./pages/add-product.html",
             controller: "addProductController"
         })
+        .when('/admin/product/:id', {
+            templateUrl: "./pages/update-product.html",
+            controller: "updateProductController"
+        })
         .otherwise({
             redirectTo: "/"
         })
@@ -74,12 +78,26 @@ app.controller('dashboardController', function ($scope, $rootScope, $http) {
 })
 
 app.controller("addProductController", function ($scope, $routeParams, $http) {
-    $scope.submit = function () {
+    $scope.submit = function (event) {
         if ($scope.product) {
             $http.post("http://localhost:3000/books", $scope.product)
                 .then(function () {
                     alert("Thêm mới thành công")
                 })
         }
+    }
+})
+
+app.controller("updateProductController", function ($scope, $routeParams, $http) {
+    $scope.id = $routeParams.id
+    $http.get("http://localhost:3000/books/" + $scope.id)
+        .then(function (res) {
+            $scope.product = res.data
+        })
+    $scope.submit = function () {
+        $http.put("http://localhost:3000/books/" + $scope.id, $scope.product)
+            .then(function () {
+                alert("Sửa sản phẩm thành công")
+            })
     }
 })

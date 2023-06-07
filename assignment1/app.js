@@ -35,15 +35,15 @@ app.config(function ($routeProvider, $locationProvider) {
 app.controller('myController', function ($rootScope, $scope, $http) {
     $http.get('http://localhost:3000/books')
         .then(function (res) {
-            $rootScope.books = res.data
+            $rootScope.data = res.data
         }) //Promise
-
+    $rootScope.books = $rootScope.data
     $scope.orderProduct = function (type) {
         $scope.orderType = type
     }
     $scope.search = function (event) {
         if (event.keyCode == 13) {
-            $rootScope.books = data.books.filter(function (book) {
+            $rootScope.books = $rootScope.data.filter(function (book) {
                 return book.name.toLowerCase().includes($scope.searchStr.toLowerCase())
             })
         }

@@ -1,18 +1,18 @@
 <div class="container mx-auto">
     <h2>Thêm mới sản phẩm</h2>
-    <form class="row">
+    <form class="row" ng-submit="submit()">
         <div class="col-8">
             <div>
                 <label for="exampleInputEmail1" class="form-label">Tên sản phẩm</label>
-                <input type="text" class="form-control">
+                <input type="text" class="form-control" ng-model="product.name">
             </div>
             <div>
                 <label for="exampleInputEmail1" class="form-label">Giá</label>
-                <input type="number" class="form-control">
+                <input type="number" class="form-control" ng-model="product.original_price">
             </div>
             <div>
                 <label for="exampleInputEmail1" class="form-label">Mô tả</label>
-                <textarea type="text" class="form-control"></textarea>
+                <textarea type="text" class="form-control" ng-model="product.short_description"></textarea>
             </div>
         </div>
         <div class="col-4">

@@ -73,6 +73,13 @@ app.controller('dashboardController', function ($scope, $rootScope, $http) {
     }
 })
 
-app.controller("addProductController", function ($scope, $routeParams) {
-    console.log("addProductController");
+app.controller("addProductController", function ($scope, $routeParams, $http) {
+    $scope.submit = function () {
+        if ($scope.product) {
+            $http.post("http://localhost:3000/books", $scope.product)
+                .then(function () {
+                    alert("Thêm mới thành công")
+                })
+        }
+    }
 })

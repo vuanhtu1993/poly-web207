@@ -14,29 +14,9 @@
     <script type="module" src="./app.js"></script>
 </head>
 
-<body ng-app="myApp" ng-controller="myController" ng-init="orderType = 'name'">
-    <!-- Bước 1: khởi tạo ứng dụng angular ng-app -->
-    <!-- Bước 2: Header -->
-    <nav class="navbar bg-primary navbar-expand-lg">
-        <div class="container">
-            <a class="navbar-brand" href="#">
-                <img src="./images/logo.png" alt="Bootstrap" width="60">
-            </a>
-
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
-                data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
-                aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                <form class="d-flex flex-grow-1" role="search">
-                    <input ng-keyup="search($event)" ng-model="searchStr" class="form-control me-2" type="search"
-                        placeholder="Tìm kiếm" aria-label="Search">
-                    <button class="btn bg-white" type="submit">Search</button>
-                </form>
-            </div>
-        </div>
-    </nav>
+<body ng-app="myApp">
+    <!-- Header -->
+    <header>Header</header>
     <!-- Content -->
     <ng-view></ng-view>
     <!-- Footer -->
